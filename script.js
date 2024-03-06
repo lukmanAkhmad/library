@@ -7,13 +7,24 @@ newBookBtn.addEventListener('click', () => {
     newBookForm.style.display = "grid";
 });
 
-const myLibrary = [];
+const myLibrary = [
+    {
+        title: 'Dunia Sophie',
+        author: 'Jostein Gaarder',
+        pages: '798',
+        read: true,
+    }
+];
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+Book.prototype.saklarBaca = function(){
+    this.read = !this.read;
 }
 
 function addBookToLibrary() {
@@ -48,9 +59,23 @@ function render() {
         <p>${book.pages}</p>
         <p>${book.read ? "Read" : "Not Yet Read"}</p>
         </div>
+        <div class="footer-card">
+        <button class="remove-btn" onclick="removeArray(${i})">Delete</button>
+        <button class="btn-read" onclick="saklarRead(${i})">Read</button> 
+        </div>
         `;
 
         mainContent.appendChild(cardMain);
     }
 
+}
+
+function removeArray(index){
+    myLibrary.splice(index, 1);
+    render();
+}
+
+function saklarRead(index){
+    myLibrary[index].saklarBaca();
+    render();
 }
