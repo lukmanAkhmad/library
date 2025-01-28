@@ -25,4 +25,14 @@ body{
 #article{
     background-color: honeydew;
     grid-column: 2 / 3;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(330px, 1fr));
+    gap: 5px;
+}
+#article .card{
+    height: 250px;
+}
+.card{
+    background-color: rebeccapurple;
 }
