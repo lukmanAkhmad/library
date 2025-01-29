@@ -32,7 +32,28 @@ body{
 }
 #article .cards{
     height: 250px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .cards{
     background-color: rebeccapurple;
+}
+
+.cards p{
+    color: black;
+    font-weight: normal;
+    font-size: 14px;
+}
+.cards .cardTitle{
+    font-size: 45px;
+    text-align: center;
+}
+.cards .cardAuthor{
+    font-size: 33px;
+}
+.cards .cardPages{
+    font-size: 25px;
+}
+.cards .cardRead{
+    font-size: 25px;
 }
