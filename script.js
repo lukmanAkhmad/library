@@ -1,4 +1,7 @@
 const article = document.querySelector("#article");
+const dialogElem = document.querySelector("#dialog");
+const showModalBtn = document.querySelector("#newBook");
+const closeModalBtn = document.querySelector("#closeModal");
 
 const myLibrary = [];
 
@@ -44,3 +47,11 @@ function createCard(values) {
     cardAuthor.appendChild(cardPages);
     cardPages.appendChild(cardRead);
 };
+
+showModalBtn.addEventListener("click", () => {
+    dialogElem.showModal();
+});
+
+closeModalBtn.addEventListener("click", () => {
+dialogElem.close();
+});
