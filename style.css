@@ -30,9 +30,9 @@ body{
     grid-template-columns: repeat(auto-fit,minmax(330px, 1fr));
     gap: 5px;
 }
-#article .card{
+#article .cards{
     height: 250px;
 }
-.card{
+.cards{
     background-color: rebeccapurple;
 }
