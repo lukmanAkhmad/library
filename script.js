@@ -43,7 +43,11 @@ function createCard() {
         cardTitle.textContent = val.title;
         cardAuthor.textContent = val.author;
         cardPages.textContent = `${val.pages} Pages`;
-        cardRead.textContent = val.read;
+        if(val.read === true){
+            cardRead.textContent = "Read";
+        } else{
+            cardRead.textContent = "Not Read";
+        }
 
         article.appendChild(card);
         card.appendChild(cardTitle);
@@ -69,7 +73,7 @@ addBookBtn.addEventListener("click", (e) => {
     const inputTitle = document.querySelector("#title").value;
     const inputAuthor = document.querySelector("#author").value;
     const inputPages = document.querySelector("#pages").value;
-    const inputRead = document.querySelector("#read").checked
+    const inputRead = document.querySelector("#read").checked;
     addBookToLibrary(inputTitle, inputAuthor, inputPages, inputRead);
     console.table(myLibrary);
 
