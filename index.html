@@ -33,33 +33,21 @@
                         </div>
                         <div id="containerRadioBtn">
                             <legend>Have you read this book?</legend>
-                            <ul>
-                                <li>
-                                    <input type="radio" id="read" name="read" value="read">
-                                    <label for="read">Read</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="not-read" name="read" value="not-read">
-                                    <label for="not-read">Not read</label>
-                                </li>
-                            </ul>
+                            <div>
+                                <input type="radio" id="read" name="read" value="read">
+                                <label for="read">Read</label>
+                            </div>
                         </div>
                     </section>
                     <section class="btnSection">
-                        <button id="closeModal">close</button>
-                        <button id="addBook">Add Book</button>
+                        <button id="closeModal" type="button">close</button>
+                        <button id="addBook" type="submit">Add Book</button>
                     </section>
                 </form>
             </dialog>
-            <button id="newBook">New Book</button>
+            <button id="newBook" type="button">New Book</button>
         </div>
         <div id="article">
-            <div class="cards">
-                <p class="cardTitle">Article Title</p>
-                <p class="cardAuthor">Joestin Gaarder</p>
-                <p class="cardPages">123 Pages</p>
-                <p class="cardRead">read</p>
-            </div>
         </div>
     </div>
 </body>

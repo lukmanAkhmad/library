@@ -2,8 +2,16 @@ const article = document.querySelector("#article");
 const dialogElem = document.querySelector("#dialog");
 const showModalBtn = document.querySelector("#newBook");
 const closeModalBtn = document.querySelector("#closeModal");
+const addBookBtn = document.querySelector("#addBook");
 
-const myLibrary = [];
+const myLibrary = [
+    {
+        title: "The Hobbit",
+        author: "J.J.R. Tolkien",
+        pages: "295",
+        read: "read",
+    }
+];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -17,41 +25,54 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(books);
 };
 
-addBookToLibrary("The Hobbit", "J.J.R. Tolkien", "295", "read");
-
-addBookToLibrary("The Hobbit", "J.J.R. Tolkien", "295", "not read");
 console.table(myLibrary);
 
-myLibrary.forEach(createCard);
+function createCard() {
+    myLibrary.forEach((val) => {
+        const card = document.createElement("div");
+        card.classList.add("cards");
+        const cardTitle = document.createElement("p");
+        cardTitle.classList.add("cardTitle");
+        const cardAuthor = document.createElement("p");
+        cardAuthor.classList.add("cardAuthor");
+        const cardPages = document.createElement("p");
+        cardPages.classList.add("cardPages");
+        const cardRead = document.createElement("p");
+        cardRead.classList.add("cardRead");
 
-function createCard(values) {
-    const card = document.createElement("div");
-    card.classList.add("cards");
-    const cardTitle = document.createElement("p");
-    cardTitle.classList.add("cardTitle");
-    const cardAuthor = document.createElement("p");
-    cardAuthor.classList.add("cardAuthor");
-    const cardPages = document.createElement("p");
-    cardPages.classList.add("cardPages");
-    const cardRead = document.createElement("p");
-    cardRead.classList.add("cardRead");
+        cardTitle.textContent = val.title;
+        cardAuthor.textContent = val.author;
+        cardPages.textContent = `${val.pages} Pages`;
+        cardRead.textContent = val.read;
 
-    cardTitle.textContent = values.title;
-    cardAuthor.textContent = values.author;
-    cardPages.textContent = `${values.pages} Pages`;
-    cardRead.textContent = values.read;
-
-    article.appendChild(card);
-    card.appendChild(cardTitle);
-    cardTitle.appendChild(cardAuthor);
-    cardAuthor.appendChild(cardPages);
-    cardPages.appendChild(cardRead);
-};
+        article.appendChild(card);
+        card.appendChild(cardTitle);
+        cardTitle.appendChild(cardAuthor);
+        cardAuthor.appendChild(cardPages);
+        cardPages.appendChild(cardRead);
+    })
+}
+createCard();
 
 showModalBtn.addEventListener("click", () => {
     dialogElem.showModal();
 });
 
-closeModalBtn.addEventListener("click", () => {
-dialogElem.close();
+closeModalBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialogElem.close();
+});
+
+addBookBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const inputTitle = document.querySelector("#title").value;
+    const inputAuthor = document.querySelector("#author").value;
+    const inputPages = document.querySelector("#pages").value;
+    const inputRead = document.querySelector("#read").checked
+    addBookToLibrary(inputTitle, inputAuthor, inputPages, inputRead);
+    console.table(myLibrary);
+
+    article.textContent = "";
+    createCard();
 });
