@@ -65,4 +65,18 @@ body{
     z-index: 100;
     left: 40%;
     top: 30%;
+
+    display: grid;
+}
+#containerRadioBtn{
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    gap: 27px;
+
+    list-style: none;
 }
