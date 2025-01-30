@@ -39,23 +39,37 @@ function createCard() {
         cardPages.classList.add("cardPages");
         const cardRead = document.createElement("p");
         cardRead.classList.add("cardRead");
+        const deleteBook = document.createElement("button");
+        deleteBook.classList.add("deleteBook");
 
         cardTitle.textContent = val.title;
         cardAuthor.textContent = val.author;
         cardPages.textContent = `${val.pages} Pages`;
-        if(val.read === true){
+        if (val.read === true) {
             cardRead.textContent = "Read";
-        } else{
+        } else {
             cardRead.textContent = "Not Read";
         }
+        deleteBook.textContent = "Delete";
+
+        let indexBook = myLibrary.indexOf(val);
+        console.log(indexBook);
+        deleteBook.addEventListener("click", () => {
+            console.log("deleteBTN");
+            console.log(indexBook);
+            myLibrary.splice(indexBook, 1);
+            console.table(myLibrary);
+            renderCard();
+        });
 
         article.appendChild(card);
         card.appendChild(cardTitle);
-        cardTitle.appendChild(cardAuthor);
-        cardAuthor.appendChild(cardPages);
-        cardPages.appendChild(cardRead);
-    })
-}
+        card.appendChild(cardAuthor);
+        card.appendChild(cardPages);
+        card.appendChild(cardRead);
+        card.appendChild(deleteBook);
+    });
+};
 createCard();
 
 showModalBtn.addEventListener("click", () => {
@@ -80,3 +94,8 @@ addBookBtn.addEventListener("click", (e) => {
     article.textContent = "";
     createCard();
 });
+
+function renderCard() {
+    article.textContent = "";
+    createCard();
+};

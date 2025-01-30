@@ -71,10 +71,7 @@ body{
     flex-direction: row;
     gap: 22px;
 }
-/* ul{
-    display: flex;
-    flex-direction: row;
-    gap: 27px;
-
-    list-style: none;
-} */
+.deleteBook{
+    width: 90px;
+    height: 30px;
+}
