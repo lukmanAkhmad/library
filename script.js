@@ -4,20 +4,17 @@ const showModalBtn = document.querySelector("#newBook");
 const closeModalBtn = document.querySelector("#closeModal");
 const addBookBtn = document.querySelector("#addBook");
 
-const myLibrary = [
-    {
-        title: "The Hobbit",
-        author: "J.J.R. Tolkien",
-        pages: "295",
-        read: "read",
-    }
-];
+const myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+};
+
+Book.prototype.switcherRead = function () {
+    this.read ? this.read = false : this.read = true;
 };
 
 function addBookToLibrary(title, author, pages, read) {
@@ -39,8 +36,10 @@ function createCard() {
         cardPages.classList.add("cardPages");
         const cardRead = document.createElement("p");
         cardRead.classList.add("cardRead");
-        const deleteBook = document.createElement("button");
-        deleteBook.classList.add("deleteBook");
+        const deleteBookBtn = document.createElement("button");
+        deleteBookBtn.classList.add("deleteBookBtn");
+        const readStatusBtn = document.createElement("button");
+        readStatusBtn.classList.add("readStatusBtn");
 
         cardTitle.textContent = val.title;
         cardAuthor.textContent = val.author;
@@ -50,16 +49,23 @@ function createCard() {
         } else {
             cardRead.textContent = "Not Read";
         }
-        deleteBook.textContent = "Delete";
+        deleteBookBtn.textContent = "Delete";
+        readStatusBtn.textContent = "Read Status"
 
         let indexBook = myLibrary.indexOf(val);
         console.log(indexBook);
-        deleteBook.addEventListener("click", () => {
+
+        deleteBookBtn.addEventListener("click", () => {
             console.log("deleteBTN");
             console.log(indexBook);
             myLibrary.splice(indexBook, 1);
             console.table(myLibrary);
             renderCard();
+        });
+        readStatusBtn.addEventListener("click", () => {
+            console.log(`readStatusButton on click`);
+            toggleRead(indexBook);
+            console.table(myLibrary);
         });
 
         article.appendChild(card);
@@ -67,7 +73,8 @@ function createCard() {
         card.appendChild(cardAuthor);
         card.appendChild(cardPages);
         card.appendChild(cardRead);
-        card.appendChild(deleteBook);
+        card.appendChild(deleteBookBtn);
+        card.appendChild(readStatusBtn);
     });
 };
 createCard();
@@ -99,3 +106,9 @@ function renderCard() {
     article.textContent = "";
     createCard();
 };
+function toggleRead(idx) {
+    myLibrary[idx].switcherRead();
+    article.textContent = "";
+    console.log(`index book ${idx}`)
+    createCard();
+}
