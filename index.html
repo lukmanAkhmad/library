@@ -19,33 +19,35 @@
                 <button id="newBook" type="button">New Book</button>
             </div>
             <dialog id="dialog">
-                <form action="">
-                    <section class="inputSection">
-                        <div>
-                            <label for="title">Title: </label>
-                            <input type="text" id="title" name="title_book">
-                        </div>
-                        <div>
-                            <label for="author">Author: </label>
-                            <input type="text" id="author" name="author_book">
-                        </div>
-                        <div>
-                            <label for="pages">Pages: </label>
-                            <input type="text" id="pages" name="pages_book">
-                        </div>
-                        <div id="containerRadioBtn">
-                            <legend>Have you read this book?</legend>
-                            <div>
-                                <input type="radio" id="read" name="read" value="read">
-                                <label for="read">Read</label>
+                <div id="containerForm">
+                    <form action="">
+                        <section class="inputSection">
+                            <div class="formDiv">
+                                <label class="labelTitle" for="title">Title </label>
+                                <input type="text" id="title" name="title_book">
                             </div>
-                        </div>
-                    </section>
-                    <section class="btnSection">
-                        <button id="closeModal" type="button">close</button>
-                        <button id="addBook" type="submit">Add Book</button>
-                    </section>
-                </form>
+                            <div class="formDiv">
+                                <label class="labelAuthor" for="author">Author </label>
+                                <input type="text" id="author" name="author_book">
+                            </div>
+                            <div class="formDiv">
+                                <label class="labelPages" for="pages">Pages </label>
+                                <input type="number" id="pages" name="pages_book">
+                            </div>
+                            <div id="containerCheckbox">
+                                <legend>Have you read this book?</legend>
+                                <div id="subContainerCheckbox">
+                                    <input type="checkbox" id="read" name="read" value="read">
+                                    <label class="labelRead" for="read">Read</label>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="btnSection">
+                            <button id="closeModal" type="button">close</button>
+                            <button id="addBook" type="submit">Add Book</button>
+                        </section>
+                    </form>
+                </div>
             </dialog>
         </div>
         <div id="article">
