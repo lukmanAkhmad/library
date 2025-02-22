@@ -6,15 +6,17 @@ const addBookBtn = document.querySelector("#addBook");
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-};
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read
+    }
 
-Book.prototype.switcherRead = function () {
-    this.read ? this.read = false : this.read = true;
+    switcherRead() {
+        this.read ? this.read = false : this.read = true;
+    }
 };
 
 function addBookToLibrary(title, author, pages, read) {
