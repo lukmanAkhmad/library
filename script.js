@@ -103,12 +103,15 @@ addBookBtn.addEventListener("click", (e) => {
 
   if (fieldInputTitle.validity.valueMissing) {
     showErrorInputTitle();
+    errorMessageTitle.classList.add("active");
   }
   if (fieldInputAuthor.validity.valueMissing) {
     showErrorInputAuthor();
+    errorMessageAuthor.classList.add("active");
   }
   if (fieldInputPages.validity.valueMissing) {
     showErrorInputPages();
+    errorMessagePages.classList.add("active");
   }
 
   if (
@@ -144,9 +147,18 @@ function toggleRead(idx) {
   createCard();
 }
 
-const deleteErrorMessageTitle = () => (errorMessageTitle.textContent = "");
-const deleteErrorMessageAuthor = () => (errorMessageAuthor.textContent = "");
-const deleteErrorMessagePages = () => (errorMessagePages.textContent = "");
+const deleteErrorMessageTitle = () => {
+  errorMessageTitle.textContent = "";
+  errorMessageTitle.classList.remove("active");
+};
+const deleteErrorMessageAuthor = () => {
+  errorMessageAuthor.textContent = "";
+  errorMessageAuthor.classList.remove("active");
+};
+const deleteErrorMessagePages = () => {
+  errorMessagePages.textContent = "";
+  errorMessagePages.classList.remove("active");
+};
 
 fieldInputTitle.addEventListener("input", deleteErrorMessageTitle);
 fieldInputAuthor.addEventListener("input", deleteErrorMessageAuthor);
