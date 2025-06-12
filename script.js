@@ -95,7 +95,10 @@ showModalBtn.addEventListener("click", () => {
 closeModalBtn.addEventListener("click", (e) => {
   e.preventDefault();
   dialogElem.close();
-  formField.reset();
+  // formField.reset();
+  deleteErrorMessageTitle();
+  deleteErrorMessageAuthor();
+  deleteErrorMessagePages();
 });
 
 addBookBtn.addEventListener("click", (e) => {
